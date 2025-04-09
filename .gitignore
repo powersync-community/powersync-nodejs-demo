@@ -1,0 +1,7 @@
+.idea
+node_modules
+powersync.db
+powersync.db-shm
+powersync.db-wal
+
+.env

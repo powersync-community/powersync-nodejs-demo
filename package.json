@@ -1,0 +1,20 @@
+{
+  "name": "powersync-nodejs",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@powersync/node": "^0.2.2",
+    "better-sqlite3": "^11.9.1",
+    "js-logger": "^1.6.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7"
+  },
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
