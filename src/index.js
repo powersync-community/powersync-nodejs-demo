@@ -13,14 +13,29 @@ const main = async () => {
             dbFilename: "powersync.db",
         }
     });
+
+    db.registerListener({
+        statusChanged: (status) => {
+            if(status && status.downloadProgress) {
+                const progress = Number(status.downloadProgress.downloadedFraction * 100).toFixed(2)
+                logger.info("Progress ", progress, "%");
+                logger.info("Total Operations", status.downloadProgress.totalOperations);
+            }
+        }
+    });
+
     // Not connected just checking version
     console.log(await db.get('SELECT powersync_rs_version();'));
     // Use HTTP stream
     await db.connect(new Connector(), { connectionMethod: SyncStreamConnectionMethod.HTTP });
-    await db.waitForFirstSync()
-    console.log("Connected and first sync complete!");
+    await db.waitForFirstSync();
+    logger.info("Connected and first sync complete!")
 
-    console.log(await db.get('SELECT * FROM lists'));
+    db.watch("SELECT * FROM lists", [], {
+        onResult: (result) => {
+            logger.info("Total Lists ", result.rows.length);
+        }
+    });
 }
 
 main();

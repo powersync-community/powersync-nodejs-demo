@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@powersync/node": "^0.2.2",
+    "@powersync/node": "^0.4.5",
     "better-sqlite3": "^11.9.1",
     "js-logger": "^1.6.1"
   },

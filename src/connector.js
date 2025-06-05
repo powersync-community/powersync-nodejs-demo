@@ -7,7 +7,6 @@ class Connector {
             endpoint: process.env.POWERSYNC_URL,
             token: process.env.POWERSYNC_DEV_TOKEN,
         };
-        console.log(credentials);
         return credentials
     }
 
